@@ -26,7 +26,9 @@ main{padding:0 0 150px}.pd{padding:calc(22px + env(safe-area-inset-top,0px)) 22p
 .hs{display:flex;gap:12px;overflow-x:auto;padding:4px 22px 14px;scroll-snap-type:x mandatory}.hs::-webkit-scrollbar{display:none}
 .t{flex:none;width:150px;height:150px;scroll-snap-align:start;padding:16px 14px;color:var(--tc,#fff);cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(160deg,var(--a),var(--b));clip-path:polygon(0 0,62% 0,100% 22%,100% 100%,0 100%);border-radius:22px 0 22px 22px;position:relative}
 .t .ic{position:absolute;left:14px;top:18px;font-size:1.9rem}.t b{font-size:1.15rem}.t small{color:inherit;opacity:.75}
-.img{--a:#ff8a73;--b:#fa6450}.vid{--a:#6a6a6e;--b:#1d1d20}.file{--a:#e9e9ec;--b:#bdbdc3;--tc:#222}.note{--a:#ffb35e;--b:#f98a3c}
+.all{--a:#8aa4ff;--b:#4a63e8}.img{--a:#ff8a73;--b:#fa6450}.vid{--a:#6a6a6e;--b:#1d1d20}.file{--a:#e9e9ec;--b:#bdbdc3;--tc:#222}.note{--a:#ffb35e;--b:#f98a3c}
+.si{margin:8px 0 12px;border-radius:999px;padding:12px 18px;background:#fff7f5}
+.ch{flex:none;width:auto;margin:0;padding:8px 14px;background:#fff1ee;color:var(--c);font-size:.9rem}.ch.on{background:var(--c);color:#fff}
 .r{display:flex;align-items:center;gap:14px;padding:10px 22px;cursor:pointer}.r.on{background:#fff1ee}
 .fi{width:54px;height:58px;flex:none;background:var(--c) center/cover;clip-path:polygon(0 0,62% 0,100% 22%,100% 100%,0 100%);border-radius:14px 0 14px 14px;display:grid;place-items:center;font-size:1.5rem}
 .rt{flex:1;min-width:0}.rt b{display:block;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dots{color:#555;font-size:1.3rem;padding:0 6px}
@@ -44,6 +46,8 @@ nav button{background:none;color:#8a8a96;width:auto;margin:0;padding:8px 12px;fo
 nav .fab{width:64px;height:64px;padding:0;border-radius:50%;background:#12122b;color:#fff;font-size:2rem;margin-top:-30px;box-shadow:0 8px 20px #12122b55}
 nav b{position:absolute;top:0;right:2px;background:var(--c);color:#fff;border-radius:99px;font-size:.65rem;padding:1px 6px}
 #tray{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(86px + env(safe-area-inset-bottom,0px));width:min(86vw,400px);background:#12122b;color:#fff;border-radius:20px;padding:10px 14px;z-index:6;cursor:pointer;box-shadow:0 10px 24px #0005}
+#ab{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(86px + env(safe-area-inset-bottom,0px));width:min(90vw,420px);background:#fff;border-radius:22px;padding:8px 10px 8px 16px;z-index:6;display:flex;justify-content:space-between;align-items:center;box-shadow:0 10px 30px #12122b44;border:1px solid var(--bd)}
+#ab button{width:auto;margin:0 0 0 6px;padding:10px 14px}#tray:not([hidden])~#ab{bottom:calc(148px + env(safe-area-inset-bottom,0px))}
 #tray .bar{margin:6px 0 0}#tray small{color:#ffffffb0}
 dialog{border:0;border-radius:28px;background:#fff;color:var(--tx);width:min(92vw,440px);max-height:88vh;padding:18px}
 dialog::backdrop{background:#12122b99}
@@ -61,8 +65,8 @@ body.dr::after{content:"Drop here to add to your vault";position:fixed;inset:12p
 
 <div id="app" hidden>
 <main id="v"></main>
-<div id="tray" hidden onclick="tab('u')"></div>
-<nav><button id="n1" onclick="tab('v')">🗄️</button><button id="n2" onclick="tab('s')">📡</button><button class="fab" onclick="pick()">+</button><button id="n3" onclick="tab('u')">⬆️<b id="bg" hidden></b></button><button onclick="lock()">🔒</button></nav>
+<div id="tray" hidden onclick="tab('u')"></div><div id="ab" hidden></div>
+<nav><button id="n1" onclick="tab('v')">🗄️</button><button id="n2" onclick="tab('s')">📡</button><button class="fab" onclick="pick()">+</button><button id="n3" onclick="tab('u')">⬆️<b id="bg" hidden></b></button><button onclick="askLock()">🔒</button></nav>
 </div>
 <div id="st" hidden></div><input type="file" id="fu" multiple hidden>
 <dialog id="m"></dialog>
@@ -82,7 +86,7 @@ const SCFG={apiKey:"AIzaSyBcQEV0K5zT9jticMyz92nlhjeVbbLKWBw",authDomain:"tijori-
 const $=s=>document.querySelector(s),enc=new TextEncoder(),dec=new TextDecoder(),m=$('#m');
 const S={img:['Images','🖼️','image/*'],vid:['Videos','🎬','video/*'],file:['Files','📄','*/*'],note:['Notes','📝','']};
 const MAX=25*1024*1024,CH=600*1024;
-let auth,db,rtdb,KEY,UID,items=[],sel=new Set(),tb='v',nav={s:null,f:null},idle,Q=[],busy=0;
+let auth,db,rtdb,KEY,UID,items=[],sel=new Set(),tb='v',nav={s:null,f:null},idle,Q=[],busy=0,selMode=0,CB=null,qs='';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';');
 const err=t=>$('#er').textContent=t,st=t=>{$('#st').hidden=!t;$('#st').textContent=t};
 const fs=n=>n>1e6?(n/1e6).toFixed(1)+' MB':Math.ceil(n/1e3)+' KB';
@@ -124,6 +128,7 @@ function start(){
  ['click','touchstart','keydown'].forEach(e=>addEventListener(e,()=>{clearTimeout(idle);idle=setTimeout(lock,300000)}));
 }
 const lock=()=>auth.signOut().then(()=>location.reload());
+const askLock=()=>{if(confirm('Log out of your vault?'))lock()};
 
 // ===== Files: chunked + encrypted =====
 async function putBytes(u,meta,cb){
@@ -145,7 +150,8 @@ async function thumb(f,vid){
 }
 
 // ===== Upload queue: everything you pick or drop collects here =====
-const pick=()=>{const s=nav.s&&nav.s!='note'?nav.s:null;$('#fu').accept=s?S[s][2]:'*/*';$('#fu').click()};
+const cs=()=>nav.s&&nav.s!='note'&&nav.s!='all'?nav.s:null;
+const pick=()=>{const s=cs();$('#fu').accept=s?S[s][2]:'*/*';$('#fu').click()};
 function addFiles(F,sec,fold){
  for(const f of F){if(f.size>MAX){alert(f.name+' is too large (max 25MB)');continue}
   Q.push({id:rid(),f,name:f.name,size:f.size,s:sec||(f.type.startsWith('image/')?'img':f.type.startsWith('video/')?'vid':'file'),fold:fold||'',st:'wait',p:0})}
@@ -160,10 +166,10 @@ async function runQ(){
   paint()}
  busy=0;
 }
-$('#fu').onchange=e=>{const F=[...e.target.files];e.target.value='';addFiles(F,nav.s&&nav.s!='note'?nav.s:null,nav.f)};
+$('#fu').onchange=e=>{const F=[...e.target.files];e.target.value='';addFiles(F,cs(),nav.f)};
 ['dragenter','dragover'].forEach(t=>addEventListener(t,e=>{if(KEY){e.preventDefault();document.body.classList.add('dr')}}));
 addEventListener('dragleave',e=>{if(!e.relatedTarget)document.body.classList.remove('dr')});
-addEventListener('drop',e=>{e.preventDefault();document.body.classList.remove('dr');if(KEY)addFiles([...e.dataTransfer.files],nav.s&&nav.s!='note'?nav.s:null,nav.f)});
+addEventListener('drop',e=>{e.preventDefault();document.body.classList.remove('dr');if(KEY)addFiles([...e.dataTransfer.files],cs(),nav.f)});
 function paint(){
  const a=Q.filter(x=>x.st=='wait'||x.st=='up'),tr=$('#tray'),bg=$('#bg');
  bg.hidden=!a.length;bg.textContent=a.length;tr.hidden=!a.length||tb=='u';
@@ -185,27 +191,63 @@ const R=(x,sh)=>{
  return `<div class="r${sh&&sel.has(x.id)?' on':''}" onclick="${oc}"><div class="fi" ${x.th?`style="background-image:url(${x.th})"`:''}>${x.th?'':ico(x)}</div><div class="rt"><b>${esc(x.k=='note'?x.title:x.name)}</b><small>${x.k=='note'?esc((x.body||'').slice(0,30)||'Note'):fs(x.size)+' · '+S[x.sec][0]}</small></div>${sh?'<span class="chk">✓</span>':'<span class="dots">⋮</span>'}</div>`};
 const tile=R;
 const FR=(f,s)=>`<div class="r" onclick="open2('${s}','${f.id}')"><div class="fi">📁</div><div class="rt"><b>${esc(f.name)}</b><small>${items.filter(x=>x.fold==f.id).length} files</small></div><span class="dots">⋮</span></div>`;
-function tab(t){tb=t;sel.clear();if(t=='v')nav={s:null,f:null};render()}
-const open2=(s,f)=>{nav={s,f:f||null};render()},up=()=>{nav.f?nav.f=null:nav.s=null;render()};
+function tab(t){tb=t;sel.clear();selMode=0;qs='';if(t=='v')nav={s:null,f:null};render()}
+const open2=(s,f)=>{nav={s,f:f||null,q:'all'};sel.clear();selMode=0;qs='';render()},up=()=>{nav.f?nav.f=null:nav.s=null;sel.clear();selMode=0;qs='';render()};
+const q=()=>qs.trim().toLowerCase();
+const mt=x=>!q()||(x.k=='note'?(x.title||'')+' '+(x.body||''):x.name||'').toLowerCase().includes(q());
+const srch=id=>`<div style="padding:0 22px"><input class="si" placeholder="🔍 Search files, folders, notes" value="${esc(qs)}" oninput="qs=this.value;$('#${id}').innerHTML=${id=='hm'?'homeBody()':'secBody()'}"></div>`;
+const homeBody=()=>{
+ if(q()){const r=items.filter(x=>x.k=='folder'?x.name.toLowerCase().includes(q()):mt(x));return `<div class="sh"><span>RESULTS (${r.length})</span></div>`+(r.map(x=>x.k=='folder'?FR(x,x.sec):R(x)).join('')||'<p class="em">No matches found.</p>')}
+ const rc=items.filter(x=>x.k!='folder').slice(0,6);
+ return `<div class="sh"><span>ALL FOLDERS</span></div><div class="hs"><div class="t all" onclick="open2('all')"><span class="ic">🗂️</span><b>All</b><small>${items.filter(x=>x.k!='folder').length} items</small></div>${Object.keys(S).map(k=>`<div class="t ${k}" onclick="open2('${k}')"><span class="ic">${S[k][1]}</span><b>${S[k][0]}</b><small>${items.filter(x=>x.sec==k&&x.k!='folder').length} items</small></div>`).join('')}</div>
+  <div class="sh"><span>RECENT FILES</span></div>${rc.map(x=>R(x)).join('')||'<p class="em">Nothing here yet. Tap + below to add files.</p>'}`};
+const secBody=()=>{const s=nav.s,fl=nav.f||s=='all'?[]:items.filter(x=>x.sec==s&&x.k=='folder'&&(!q()||x.name.toLowerCase().includes(q()))),fi=vis();
+ return fl.map(f=>FR(f,s)).join('')+fi.map(x=>R(x,selMode)).join('')+(fl.length+fi.length?'':`<p class="em">${q()?'No matches found.':'Nothing here yet. Start from the buttons above.'}</p>`)};
 function render(){
- ['n1','n2','n3'].forEach((k,i)=>$('#'+k).classList.toggle('on',tb==['v','s','u'][i]));window.scrollTo(0,0);
+ ['n1','n2','n3'].forEach((k,i)=>$('#'+k).classList.toggle('on',tb==['v','s','u'][i]));window.scrollTo(0,0);bar();
  if(tb=='u'){$('#v').innerHTML=`<div class="pd"><h1>Uploads</h1><p class="mu">Every file you pick is queued up here.</p></div><div class="row"><button onclick="pick()">⬆️ Add more files</button><button class="g" style="width:auto" onclick="clr()">Clear</button></div><div id="ql"></div>`;return paint()}
  if(tb=='s'){$('#v').innerHTML=`<div class="pd"><h1>Share</h1><p class="mu">Pick files or notes, get a code and give it to the other person. End-to-end encrypted, valid for 10 minutes, one-time use. Up to 25MB total.</p></div><div id="l"></div><div class="row"><button id="sb" onclick="send()">Send (0)</button></div><div class="pd" style="padding-top:0"><h3>📥 Receive</h3><input id="rc" inputmode="numeric" placeholder="8 digit code"><button class="g" onclick="recv()">Receive</button></div>`;return shareList()}
  const s=nav.s,fo=nav.f&&items.find(x=>x.id==nav.f);
  if(!s){const used=items.reduce((a,x)=>a+(x.size||0),0),rc=items.filter(x=>x.k!='folder').slice(0,6);
   return $('#v').innerHTML=`<div class="pd"><p class="mu" style="margin:0">Welcome</p><h1>Your storage</h1><div class="sc"><div class="ico">🗄️</div><div style="flex:1"><small>Total stored</small><b style="font-size:1.8rem;line-height:1.1;display:block;margin:2px 0">${fs(used)}</b><small>${items.filter(x=>x.k!='folder').length} files saved</small></div></div></div>
-  <div class="sh"><span>ALL FOLDERS</span></div><div class="hs">${Object.keys(S).map(k=>`<div class="t ${k}" onclick="open2('${k}')"><span class="ic">${S[k][1]}</span><b>${S[k][0]}</b><small>${items.filter(x=>x.sec==k&&x.k!='folder').length} items</small></div>`).join('')}</div>
-  <div class="sh"><span>RECENT FILES</span></div>${rc.map(x=>R(x)).join('')||'<p class="em">Nothing here yet. Tap + below to add files.</p>'}`}
- const fl=nav.f?[]:items.filter(x=>x.sec==s&&x.k=='folder'),fi=items.filter(x=>x.sec==s&&x.k!='folder'&&(x.fold||'')==(nav.f||''));
- $('#v').innerHTML=`<div class="bn"><button class="bb" onclick="up()">←</button><h1>${fo?esc(fo.name):S[s][0]}</h1><small>${fi.length} items${fl.length?' · '+fl.length+' folders':''}</small></div>
- <div class="sheet"><div class="row">${s=='note'?`<button onclick="noteForm()">✍️ New note</button>`:`${nav.f?`<button class="g d" onclick="delFolder('${nav.f}')">🗑️ Folder</button>`:`<button class="g" onclick="mkf()">📁 Folder</button>`}<button onclick="pick()">⬆️ Upload</button>`}</div>
- ${fl.map(f=>FR(f,s)).join('')}${fi.map(x=>R(x)).join('')}${fl.length+fi.length?'':'<p class="em">Nothing here yet. Start from the buttons above.</p>'}</div>`;
+  ${srch('hm')}<div id="hm">${homeBody()}</div>`}
+ const fl=nav.f||s=='all'?[]:items.filter(x=>x.sec==s&&x.k=='folder'),fi=vis();
+ $('#v').innerHTML=`<div class="bn"><button class="bb" onclick="up()">←</button><h1>${fo?esc(fo.name):s=='all'?'All':S[s][0]}</h1><small>${fi.length} items${fl.length?' · '+fl.length+' folders':''}</small></div>
+ <div class="sheet"><div class="row">${selMode?`<button onclick="selAll()">Select all</button><button class="g" style="width:auto" onclick="selTog()">Cancel</button>`:s=='note'?`<button onclick="noteForm()">✍️ New note</button>`:`${s=='all'?'':nav.f?`<button class="g d" onclick="delFolder('${nav.f}')">🗑️ Folder</button>`:`<button class="g" onclick="mkf()">📁 Folder</button>`}<button onclick="pick()">⬆️ Upload</button>`}${selMode||CB?'':'<button class="g" style="width:auto" onclick="selTog()">☑️</button>'}</div>
+ ${srch('sl')}${s=='all'?`<div class="hs" style="padding:4px 22px 10px">${CHIPS.map(([k,l])=>`<button class="ch${(nav.q||'all')==k?' on':''}" onclick="setQ('${k}')">${l} ${items.filter(x=>x.k!='folder'&&cat(x,k)).length}</button>`).join('')}</div>`:''}<div id="sl">${secBody()}</div></div>`;
 }
 function shareList(){
  $('#l').innerHTML=items.filter(x=>x.k!='folder').map(x=>R(x,1)).join('')||'<p class="em">Add something to the vault first.</p>';
  $('#sb').textContent='Send ('+sel.size+')';
 }
-const tg=id=>{sel.has(id)?sel.delete(id):sel.add(id);shareList()};
+const tg=id=>{sel.has(id)?sel.delete(id):sel.add(id);tb=='s'?shareList():keep()};
+const keep=()=>{const y=scrollY;render();scrollTo(0,y)};
+const isDoc=x=>x.k=='file'&&(/pdf|word|officedocument|msword|excel|powerpoint|opendocument|rtf|text\//.test(x.mime||'')||/\.(pdf|docx?|xlsx?|pptx?|txt|csv|rtf|odt|ods|odp)$/i.test(x.name||''));
+const cat=(x,q)=>q=='all'||(q=='img'?x.sec=='img':q=='vid'?x.sec=='vid':q=='note'?x.k=='note':q=='doc'?isDoc(x):x.k=='file'&&x.sec=='file'&&!isDoc(x));
+const CHIPS=[['all','All'],['img','🖼️ Images'],['vid','🎬 Videos'],['doc','📕 Documents'],['file','📄 Files'],['note','📝 Notes']];
+const setQ=k=>{nav.q=k;sel.clear();render()};
+const vis=()=>(nav.s=='all'?items.filter(x=>x.k!='folder'&&cat(x,nav.q||'all')):items.filter(x=>x.sec==nav.s&&x.k!='folder'&&(x.fold||'')==(nav.f||''))).filter(mt);
+const selTog=()=>{selMode=!selMode;sel.clear();keep()};
+const selAll=()=>{const v=vis();v.every(x=>sel.has(x.id))?sel.clear():v.forEach(x=>sel.add(x.id));keep()};
+const clip=cut=>{CB={cut,ids:[...sel]};sel.clear();selMode=0;keep()};
+function bar(){
+ const e=$('#ab');if(tb!='v'||!nav.s)return e.hidden=true;
+ if(CB){e.hidden=false;e.innerHTML=`<span><b>${CB.ids.length}</b> ${CB.cut?'cut':'copied'}${nav.s=='all'?' · open a folder to paste':''}</span><span>${nav.s=='all'?'':'<button onclick="paste()">📥 Paste here</button>'}<button class="g" onclick="CB=null;keep()">✕</button></span>`;return}
+ if(selMode){const d=sel.size?'':'disabled';e.hidden=false;e.innerHTML=`<span><b>${sel.size}</b> selected</span><span><button onclick="clip(1)" ${d}>✂️ Cut</button><button class="g" onclick="clip(0)" ${d}>📋 Copy</button></span>`;return}
+ e.hidden=true;
+}
+async function paste(){
+ const C=CB,L=C.ids.map(id=>items.find(x=>x.id==id)).filter(Boolean),s=nav.s,f=nav.f||'';let skip=0;CB=null;
+ try{for(let j=0;j<L.length;j++){const {id,...x}=L[j];
+   if((x.k=='note')!=(s=='note')){skip++;continue}
+   st(`${C.cut?'Moving':'Copying'} ${j+1}/${L.length}…`);
+   const nx={...x,sec:s,fold:f};
+   if(C.cut)await col('items').doc(id).update({c:await seal(KEY,nx)});
+   else if(x.k=='note')await col('items').add({c:await seal(KEY,nx),ts:Date.now()});
+   else{const {bid,n,size,...meta}=nx;await putBytes(await getBytes(x),meta)}
+  }}catch(e){alert(e.message)}
+ st('');if(skip)alert(skip+' item(s) skipped: notes and files cannot be mixed.');render();
+}
 function M(h){m.innerHTML=h;if(!m.open)m.showModal()}
 async function mkf(){const n=prompt('Folder name');if(n&&n.trim())await col('items').add({c:await seal(KEY,{k:'folder',sec:nav.s,name:n.trim()}),ts:Date.now()})}
 async function delItem(id){const x=items.find(a=>a.id==id);if(x.k=='file')for(let i=0;i<x.n;i++)await col('blobs').doc(x.bid+'_'+i).delete();await col('items').doc(id).delete()}
