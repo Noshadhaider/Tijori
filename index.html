@@ -128,7 +128,7 @@ const lock=()=>auth.signOut().then(()=>location.reload());
 // ===== Files: chunked + encrypted =====
 async function putBytes(u,meta,cb){
  const bid=rid(),n=Math.ceil(u.length/CH)||1;
- for(let i=0;i<n;i++)await col('blobs').doc(bid+'_'+i).set({d:await sealB(KEY,u.subarray(i*CH,(i+1)*CH))});cb&&cb((i+1)/n);
+ for(let i=0;i<n;i++){await col('blobs').doc(bid+'_'+i).set({d:await sealB(KEY,u.subarray(i*CH,(i+1)*CH))});cb&&cb((i+1)/n)}
  await col('items').add({c:await seal(KEY,{...meta,bid,n,size:u.length}),ts:Date.now()});
 }
 async function getBytes(x){
