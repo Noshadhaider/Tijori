@@ -1,55 +1,69 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#fa6450"><title>Tijori</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#4a5df0"><title>Tijori</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--c:#fa6450;--c2:#ff8f7a;--tx:#12122b;--mu:#8e8e9a;--bd:#f1e5e2;--rd:#e5483a;color-scheme:light}
+:root{--c:#4a5df0;--c2:#6c7bff;--tx:#12122b;--mu:#8a8fa8;--bd:#e7e9fb;--rd:#e5483a;color-scheme:light}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;min-height:100vh;background:linear-gradient(160deg,#ffe3dc,#fb9a87 55%,#fa6450) fixed;color:var(--tx);font:16px/1.4 Outfit,system-ui,sans-serif}
-h1{font:700 2rem/1.1 Outfit,system-ui,sans-serif;margin:0 0 6px}h3{margin:1.2rem 0 .4rem;font-size:1.05rem}
+body{margin:0;min-height:100vh;background:linear-gradient(160deg,#eef1ff,#dde4ff 45%,#cdd6ff) fixed;color:var(--tx);font:16px/1.4 Outfit,system-ui,sans-serif}
+h1{font:800 2rem/1.1 Outfit,system-ui,sans-serif;margin:0 0 6px}h3{margin:1.2rem 0 .4rem;font-size:1.05rem}
 .wrap{max-width:420px;margin:0 auto;padding:12vh 20px 40px;text-align:center}
-.wrap .card{background:#fff8f6;border-radius:36px;padding:34px 22px;box-shadow:0 20px 50px #fa645033}
+.wrap .card{background:#fff;border-radius:36px;padding:34px 22px;box-shadow:0 20px 50px #4a5df033}
 .logo{width:74px;height:80px;margin:6px auto 12px;background:var(--c);clip-path:polygon(0 0,62% 0,100% 22%,100% 100%,0 100%);display:grid;place-items:center;font-size:2.2rem}
 .mu,small{color:var(--mu)}small{display:block;font-size:.8rem}
 input,textarea{width:100%;padding:14px;margin:5px 0;border-radius:16px;border:1px solid var(--bd);background:#fff;color:var(--tx);font:inherit}
 button{font:inherit;border:0;border-radius:999px;padding:14px 16px;background:var(--c);color:#fff;font-weight:600;width:100%;margin:5px 0;cursor:pointer}
-button.g{background:#fff1ee;color:var(--c)}button.d{color:var(--rd)}button:disabled{opacity:.5}
+button.g{background:#eef0ff;color:var(--c)}button.d{color:var(--rd)}button:disabled{opacity:.5}
 .er{color:var(--rd);min-height:1.4em}
-#app{max-width:480px;margin:0 auto;min-height:100vh;background:#fff;position:relative;box-shadow:0 0 60px #c8321f22}
+#app{max-width:480px;margin:0 auto;min-height:100vh;background:#f3f5ff;position:relative;box-shadow:0 0 60px #12122b22}
 main{padding:0 0 150px}.pd{padding:calc(22px + env(safe-area-inset-top,0px)) 22px 0}
-.sc{display:flex;gap:14px;align-items:center;background:var(--c);color:#fff;border-radius:26px;padding:20px;margin:16px 0 6px;position:relative;overflow:hidden}
-.sc::after{content:"";position:absolute;right:-40px;top:-50px;width:140px;height:140px;border-radius:50%;background:#ffffff1c}
-.sc .ico{width:54px;height:54px;border-radius:50%;background:#ffffff33;display:grid;place-items:center;font-size:1.6rem;flex:none}
-.sc small{color:#ffffffd0}.bar{height:5px;border-radius:9px;background:#ffffff44;margin:8px 0 6px;overflow:hidden}.bar i{display:block;height:100%;background:#fff;border-radius:9px;transition:width .3s}
-.sh{display:flex;justify-content:space-between;align-items:center;margin:22px 22px 10px;color:#4b5671;font-weight:600;letter-spacing:.03em}
-.hs{display:flex;gap:12px;overflow-x:auto;padding:4px 22px 14px;scroll-snap-type:x mandatory}.hs::-webkit-scrollbar{display:none}
-.t{flex:none;width:150px;height:150px;scroll-snap-align:start;padding:16px 14px;color:var(--tc,#fff);cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(160deg,var(--a),var(--b));clip-path:polygon(0 0,62% 0,100% 22%,100% 100%,0 100%);border-radius:22px 0 22px 22px;position:relative}
-.t .ic{position:absolute;left:14px;top:18px;font-size:1.9rem}.t b{font-size:1.15rem}.t small{color:inherit;opacity:.75}
-.all{--a:#8aa4ff;--b:#4a63e8}.img{--a:#ff8a73;--b:#fa6450}.vid{--a:#6a6a6e;--b:#1d1d20}.file{--a:#e9e9ec;--b:#bdbdc3;--tc:#222}.note{--a:#ffb35e;--b:#f98a3c}
-.si{margin:8px 0 12px;border-radius:999px;padding:12px 18px;background:#fff7f5}
-.dots{padding:8px 10px!important}
-.ch{flex:none;width:auto;margin:0;padding:8px 14px;background:#fff1ee;color:var(--c);font-size:.9rem}.ch.on{background:var(--c);color:#fff}
-.r{display:flex;align-items:center;gap:14px;padding:10px 22px;cursor:pointer}.r.on{background:#fff1ee}
-.fi{width:54px;height:58px;flex:none;background:var(--c) center/cover;clip-path:polygon(0 0,62% 0,100% 22%,100% 100%,0 100%);border-radius:14px 0 14px 14px;display:grid;place-items:center;font-size:1.5rem}
-.rt{flex:1;min-width:0}.rt b{display:block;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dots{color:#555;font-size:1.3rem;padding:0 6px}
+.sc{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--bd);border-radius:24px;padding:16px;margin:16px 0 18px}
+.sc .ico{width:50px;height:50px;border-radius:16px;background:#eef0ff;display:grid;place-items:center;font-size:1.5rem;flex:none}
+.si{margin:0 0 14px;border-radius:18px;padding:14px 18px;background:#fff;border:1px solid var(--bd);box-shadow:0 6px 20px #4a5df014}
+.gc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.gi{background:#fff;border-radius:22px;padding:16px;display:flex;align-items:center;gap:12px;box-shadow:0 6px 18px #4a5df014}
+.gi .ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:1.35rem;flex:none}
+.gi b{display:block;font-size:.95rem}.gi small{font-weight:600;color:var(--mu)}
+.mem{background:#fff;border-radius:26px;padding:20px;box-shadow:0 10px 26px #4a5df01a;margin-bottom:18px}
+.mem .hd{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.mem .hd .ic{width:38px;height:38px;border-radius:12px;background:#eef0ff;display:grid;place-items:center;font-size:1.1rem}
+.arrow{width:38px;height:38px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;margin-left:auto;font-size:1rem}
+.donut{width:168px;height:168px;border-radius:50%;margin:6px auto 4px;display:grid;place-items:center;position:relative}
+.donut::before{content:"";position:absolute;inset:24px;background:#fff;border-radius:50%}
+.donut b{position:relative;font-size:1.7rem;font-weight:800}.donut small{position:relative}
+.pbar{height:14px;border-radius:999px;background:repeating-linear-gradient(135deg,#e4e8ff 0 6px,#eef0ff 6px 12px);overflow:hidden;position:relative;margin:4px 0 8px}
+.pbar i{position:absolute;left:0;top:0;bottom:0;background:var(--c);border-radius:999px;display:flex;align-items:center;justify-content:flex-end}
+.pbar i span{background:#fff;color:var(--c);font-size:.65rem;font-weight:700;border-radius:50%;width:26px;height:26px;display:grid;place-items:center;margin-right:2px;box-shadow:0 2px 6px #0003}
+.rowb{display:flex;justify-content:space-between;color:var(--mu);font-size:.85rem}
+.sh{display:flex;justify-content:space-between;align-items:center;margin:0 0 10px;color:var(--tx);font-weight:700}
+.sh a{color:var(--c);font-weight:600;font-size:.85rem;cursor:pointer}
+.ch{flex:none;width:auto;margin:0;padding:8px 14px;background:#fff;color:var(--c);font-size:.9rem;border:1px solid var(--bd)}.ch.on{background:var(--c);color:#fff;border-color:var(--c)}
+.hs{display:flex;gap:10px;overflow-x:auto;padding:2px 0 14px;scroll-snap-type:x mandatory}.hs::-webkit-scrollbar{display:none}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding-bottom:14px}
+.fgc{background:#fff;border-radius:22px;padding:16px;box-shadow:0 6px 18px #4a5df014;position:relative}
+.fgc .ic2{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:1.3rem;margin-bottom:10px}
+.fgc .dots{position:absolute;right:10px;top:12px;color:#aaa;font-size:1.2rem;padding:4px 6px}
+.r{display:flex;align-items:center;gap:14px;padding:10px 0;cursor:pointer}.r.on{background:#eef0ff;border-radius:16px;padding:10px}
+.fi{width:50px;height:54px;flex:none;background:var(--c) center/cover;border-radius:16px;display:grid;place-items:center;font-size:1.4rem;color:#fff}
+.rt{flex:1;min-width:0}.rt b{display:block;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dots{color:#9a9ab0;font-size:1.3rem;padding:0 6px}
 .chk{width:24px;height:24px;border-radius:50%;border:2px solid #ddd;flex:none;display:grid;place-items:center;color:#fff;font-size:.8rem}.r.on .chk{background:var(--c);border-color:var(--c)}
-.bn{background:var(--c);color:#fff;padding:calc(20px + env(safe-area-inset-top,0px)) 22px 44px;border-radius:0 0 34px 34px;position:relative;overflow:hidden}
-.bn::after{content:"";position:absolute;right:-50px;top:-60px;width:200px;height:200px;border-radius:50%;background:#00000012}
-.bn small{color:#ffffffcc}.bn h1{font-size:2.2rem;margin-top:22px}
-.bb{width:42px;height:42px;padding:0;margin:0;background:#ffffff33;color:#fff}
-.sheet{margin-top:-22px;background:#fff;border-radius:30px 30px 0 0;padding-top:14px;position:relative;min-height:55vh}
-.row{display:flex;gap:8px;padding:0 22px}.row button{margin:5px 0}
-.em{padding:20px 22px;color:var(--mu)}
-.up{padding:10px 22px}.up .bar{background:#f4e6e3;margin:6px 0 2px}.up .bar i{background:var(--c)}.up.ok .bar i{background:#2fb67c}
+.bn{background:linear-gradient(160deg,var(--c2),var(--c));color:#fff;padding:calc(20px + env(safe-area-inset-top,0px)) 22px 40px;border-radius:0 0 34px 34px;position:relative;overflow:hidden}
+.bn::after{content:"";position:absolute;right:-50px;top:-60px;width:200px;height:200px;border-radius:50%;background:#ffffff14}
+.bn small{color:#ffffffcc}.bn h1{font-size:2rem;margin-top:18px}
+.bb{width:42px;height:42px;padding:0;margin:0;background:#ffffff2e;color:#fff}
+.sheet{margin-top:-20px;background:#f3f5ff;border-radius:30px 30px 0 0;padding:16px 22px 0;position:relative;min-height:55vh}
+.row{display:flex;gap:8px}.row button{margin:5px 0}
+.em{padding:20px 0;color:var(--mu)}
+.up{padding:10px 0}.up .bar{height:6px;border-radius:9px;background:#e4e8ff;margin:6px 0 2px;overflow:hidden}.up .bar i{display:block;height:100%;background:var(--c);border-radius:9px}.up.ok .bar i{background:#2fb67c}
 nav{position:fixed;bottom:calc(12px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);width:min(92vw,440px);height:64px;display:flex;align-items:center;justify-content:space-around;background:#fff;border-radius:32px;box-shadow:0 10px 34px #12122b2e;z-index:6}
-nav button{background:none;color:#8a8a96;width:auto;margin:0;padding:8px 12px;font-size:1.35rem;position:relative}nav button.on{color:var(--c)}
-nav .fab{width:64px;height:64px;padding:0;border-radius:50%;background:#12122b;color:#fff;font-size:2rem;margin-top:-30px;box-shadow:0 8px 20px #12122b55}
-nav b{position:absolute;top:0;right:2px;background:var(--c);color:#fff;border-radius:99px;font-size:.65rem;padding:1px 6px}
+nav button{background:none;color:#9a9ab0;width:auto;margin:0;padding:8px 12px;font-size:1.3rem;position:relative}nav button.on{color:var(--c)}
+nav .fab{width:60px;height:60px;padding:0;border-radius:50%;background:var(--c);color:#fff;font-size:1.9rem;margin-top:-26px;box-shadow:0 8px 20px #4a5df066}
+nav b{position:absolute;top:0;right:2px;background:var(--rd);color:#fff;border-radius:99px;font-size:.65rem;padding:1px 6px}
 #tray{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(86px + env(safe-area-inset-bottom,0px));width:min(86vw,400px);background:#12122b;color:#fff;border-radius:20px;padding:10px 14px;z-index:6;cursor:pointer;box-shadow:0 10px 24px #0005}
 #ab{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(86px + env(safe-area-inset-bottom,0px));width:min(90vw,420px);background:#fff;border-radius:22px;padding:8px 10px 8px 16px;z-index:6;display:flex;justify-content:space-between;align-items:center;box-shadow:0 10px 30px #12122b44;border:1px solid var(--bd)}
 #ab button{width:auto;margin:0 0 0 6px;padding:10px 14px}#tray:not([hidden])~#ab{bottom:calc(148px + env(safe-area-inset-bottom,0px))}
-#tray .bar{margin:6px 0 0}#tray small{color:#ffffffb0}
+#tray .bar{height:6px;border-radius:9px;background:#ffffff33;margin:6px 0 0;overflow:hidden}#tray .bar i{display:block;height:100%;background:#fff;border-radius:9px}#tray small{color:#ffffffb0}
 dialog{border:0;border-radius:28px;background:#fff;color:var(--tx);width:min(92vw,440px);max-height:88vh;padding:18px}
 dialog::backdrop{background:#12122b99}
 #st{position:fixed;top:calc(20px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);background:#12122b;color:#fff;padding:10px 16px;border-radius:20px;z-index:20;font-size:.9rem;max-width:90vw}
@@ -58,7 +72,7 @@ body.dr::after{content:"Drop here to add to your vault";position:fixed;inset:12p
 </style></head><body>
 
 <div id="auth" class="wrap"><div class="card">
-<div class="logo">🗄️</div><h1>Tijori</h1><p class="mu">Photos, videos, files and notes in one place, open from anywhere. Log in with numbers only.</p>
+<div class="logo">🗄️</div><h1>Tijori</h1><p class="mu">Photos, videos, files and notes in one place, stored securely on Firebase. Log in with numbers only.</p>
 <input id="id" inputmode="numeric" pattern="[0-9]*" placeholder="Vault ID (4+ digits)" autocomplete="off">
 <input id="pin" inputmode="numeric" pattern="[0-9]*" type="password" placeholder="PIN (6+ digits)" autocomplete="off">
 <button onclick="go('in')">Login</button><button class="g" onclick="go('new')">Create new vault</button>
@@ -78,19 +92,20 @@ body.dr::after{content:"Drop here to add to your vault";position:fixed;inset:12p
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 <script>
 // ===== Fill in your Firebase config here =====
-// Main project (login + vault): Auth (Email/Password) + Firestore
-const CFG={apiKey:"AIzaSyBcQEV0K5zT9jticMyz92nlhjeVbbLKWBw",authDomain:"tijori-vault.firebaseapp.com",projectId:"tijori-vault",appId:"1:349470522886:web:05201754889f30724c0d87"};
-// Sharing project (Realtime Database). You can use the same config + databaseURL
-const SCFG={apiKey:"AIzaSyBcQEV0K5zT9jticMyz92nlhjeVbbLKWBw",authDomain:"tijori-vault.firebaseapp.com",databaseURL:"https://tijori-vault-default-rtdb.firebaseio.com",projectId:"tijori-vault",appId:"1:349470522886:web:05201754889f30724c0d87"};
-// ===========================================
+// Free Spark plan: Auth (Email/Password) + Firestore (metadata AND encrypted file chunks) + Realtime Database (share codes). No Storage needed.
+const CFG={apiKey:"AIzaSyCCluCz2Q7NIBQ_ilD1guetBXzphqopYjo",authDomain:"tijori-6fe1f.firebaseapp.com",projectId:"tijori-6fe1f",storageBucket:"tijori-6fe1f.firebasestorage.app",messagingSenderId:"1064763674054",appId:"1:1064763674054:web:86427b660a4ad0a743b6c7"};
+// Sharing (Realtime Database): same project, plus databaseURL
+const SCFG={...CFG,databaseURL:"https://tijori-6fe1f-default-rtdb.asia-southeast1.firebasedatabase.app"};
 
 const $=s=>document.querySelector(s),enc=new TextEncoder(),dec=new TextDecoder(),m=$('#m');
-const S={img:['Images','🖼️','image/*'],vid:['Videos','🎬','video/*'],file:['Files','📄','*/*'],note:['Notes','📝','']};
-const MAX=25*1024*1024,CH=600*1024;
+const S={img:['Photos','🖼️','image/*','#f6c84c','#fff3cf'],vid:['Videos','🎬','video/*','#5b7cff','#e3ecff'],file:['Files','📄','*/*','#35b479','#d9f2e3'],note:['Notes','📝','','#ff6f91','#ffe3ea']};
+const MAX=1024*1024*1024;      // vault quota: Firestore free tier is about 1 GB total
+const SHAREMAX=25*1024*1024;      // quick-share codes still go through Firebase RTDB, kept small
+const CH=900*1024;             // plaintext chunk size; each sealed chunk must stay under the 1 MiB Firestore document limit
 let auth,db,rtdb,KEY,UID,items=[],sel=new Set(),tb='v',nav={s:null,f:null},idle,Q=[],busy=0,selMode=0,CB=null,qs='';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';');
 const err=t=>$('#er').textContent=t,st=t=>{$('#st').hidden=!t;$('#st').textContent=t};
-const fs=n=>n>1e6?(n/1e6).toFixed(1)+' MB':Math.ceil(n/1e3)+' KB';
+const fs=n=>n>1e9?(n/1e9).toFixed(2)+' GB':n>1e6?(n/1e6).toFixed(1)+' MB':Math.ceil(n/1e3)+' KB';
 const rid=()=>Math.random().toString(36).slice(2)+Date.now().toString(36);
 const b64=u=>{let s='';for(let i=0;i<u.length;i+=32768)s+=String.fromCharCode.apply(null,u.subarray(i,i+32768));return btoa(s)};
 const unb=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
@@ -101,6 +116,11 @@ async function unsealB(key,s){const u=unb(s);return new Uint8Array(await crypto.
 const seal=(k,o)=>sealB(k,enc.encode(JSON.stringify(o))),unseal=async(k,s)=>JSON.parse(dec.decode(await unsealB(k,s)));
 const hid=async c=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',enc.encode('s'+c)))].slice(0,12).map(x=>x.toString(16).padStart(2,'0')).join('');
 const col=n=>db.collection('users/'+UID+'/'+n);
+
+// ---- raw-byte AES-GCM (no base64) used for the R2 upload/download path, so a 10GB file
+// never has its size inflated by ~33% and isn't round-tripped through a text string ----
+async function sealRaw(key,u){const iv=crypto.getRandomValues(new Uint8Array(12)),ct=new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM',iv},key,u)),r=new Uint8Array(12+ct.length);r.set(iv);r.set(ct,12);return r}
+async function unsealRaw(key,u){return new Uint8Array(await crypto.subtle.decrypt({name:'AES-GCM',iv:u.slice(0,12)},key,u.slice(12)))}
 
 if(CFG.apiKey&&SCFG.databaseURL){
  firebase.initializeApp(CFG);const sa=firebase.initializeApp(SCFG,'share');
@@ -131,17 +151,31 @@ function start(){
 const lock=()=>auth.signOut().then(()=>location.reload());
 const askLock=()=>{if(confirm('Log out of your vault?'))lock()};
 
-// ===== Files: chunked + encrypted =====
-async function putBytes(u,meta,cb){
- const bid=rid(),n=Math.ceil(u.length/CH)||1;
- for(let i=0;i<n;i++){await col('blobs').doc(bid+'_'+i).set({d:await sealB(KEY,u.subarray(i*CH,(i+1)*CH))});cb&&cb((i+1)/n)}
- await col('items').add({c:await seal(KEY,{...meta,bid,n,size:u.length}),ts:Date.now()});
+// ===== Files: encrypted in the browser, stored as ~900 KB chunks in Firestore (users/<uid>/blobs) - works on the free Spark plan =====
+const BL=(bid,i)=>col('blobs').doc(bid+'_'+i);
+async function putBytes(file,meta,cb){
+ const bid=rid(),n=Math.ceil(file.size/CH)||1;let done=0;
+ try{
+  for(let i=0;i<n;i++){
+   const chunk=new Uint8Array(await file.slice(i*CH,Math.min(file.size,(i+1)*CH)).arrayBuffer());
+   const sealed=await sealRaw(KEY,chunk);
+   await BL(bid,i).set({d:firebase.firestore.Blob.fromUint8Array(sealed)});done=i+1;
+   cb&&cb(done/n);
+  }
+ }catch(e){await deleteBlob(bid,done+1).catch(()=>{});throw e}
+ await col('items').add({c:await seal(KEY,{...meta,bid,n,size:file.size}),ts:Date.now()});
 }
 async function getBytes(x){
+ // Note: this buffers the whole decrypted file in memory before returning it.
  const out=new Uint8Array(x.size);let o=0;
- for(let i=0;i<x.n;i++){const b=await unsealB(KEY,(await col('blobs').doc(x.bid+'_'+i).get()).data().d);out.set(b,o);o+=b.length}
+ for(let i=0;i<x.n;i++){
+  const d=await BL(x.bid,i).get();if(!d.exists)throw new Error('File data missing');
+  out.set(await unsealRaw(KEY,d.data().d.toUint8Array()),o);o+=Math.min(CH,x.size-i*CH);
+ }
  return out;
 }
+async function deleteBlob(bid,n){for(let i=0;i<n;i++)await BL(bid,i).delete()}
+
 const race=p=>Promise.race([p,new Promise((_,j)=>setTimeout(j,5000))]);
 async function thumb(f,vid){
  const u=URL.createObjectURL(f);let el,w,h;
@@ -151,10 +185,14 @@ async function thumb(f,vid){
 }
 
 // ===== Upload queue: everything you pick or drop collects here =====
+const usedBytes=()=>items.reduce((a,x)=>a+(x.size||0),0);
 const cs=()=>nav.s&&nav.s!='note'&&nav.s!='all'?nav.s:null;
 const pick=()=>{const s=cs();$('#fu').accept=s?S[s][2]:'*/*';$('#fu').click()};
 function addFiles(F,sec,fold){
- for(const f of F){if(f.size>MAX){alert(f.name+' is too large (max 25MB)');continue}
+ let queued=Q.filter(x=>x.st=='wait'||x.st=='up').reduce((a,x)=>a+x.size,0);
+ for(const f of F){
+  if(usedBytes()+queued+f.size>MAX){alert(f.name+' would go over your '+fs(MAX)+' vault quota.');continue}
+  queued+=f.size;
   Q.push({id:rid(),f,name:f.name,size:f.size,s:sec||(f.type.startsWith('image/')?'img':f.type.startsWith('video/')?'vid':'file'),fold:fold||'',st:'wait',p:0})}
  paint();runQ();
 }
@@ -162,7 +200,7 @@ async function runQ(){
  if(busy)return;busy=1;let q;
  while(q=Q.find(x=>x.st=='wait')){q.st='up';paint();
   try{let th='';try{th=q.s=='img'?await thumb(q.f):q.s=='vid'?await thumb(q.f,1):''}catch{}
-   await putBytes(new Uint8Array(await q.f.arrayBuffer()),{k:'file',sec:q.s,fold:q.fold,name:q.name,mime:q.f.type||'application/octet-stream',th},p=>{q.p=p;paint()});
+   await putBytes(q.f,{k:'file',sec:q.s,fold:q.fold,name:q.name,mime:q.f.type||'application/octet-stream',th},p=>{q.p=p;paint()});
    q.st='done';q.p=1;q.f=null}catch(e){q.st='err';q.msg=e.message}
   paint()}
  busy=0;
@@ -189,34 +227,37 @@ const clr=()=>{Q=Q.filter(x=>x.st=='wait'||x.st=='up'||x.st=='err');paint()};
 const ico=x=>x.k=='note'?'📝':x.sec=='vid'?'🎬':x.sec=='img'?'🖼️':/pdf/.test(x.mime||'')?'📕':'📄';
 const R=(x,sh)=>{
  const oc=sh?`tg('${x.id}')`:x.k=='note'?`viewNote('${x.id}')`:`viewFile('${x.id}')`;
- return `<div class="r${sh&&sel.has(x.id)?' on':''}" onclick="${oc}"><div class="fi" ${x.th?`style="background-image:url(${x.th})"`:''}>${x.th?'':ico(x)}</div><div class="rt"><b>${esc(x.k=='note'?x.title:x.name)}</b><small>${x.k=='note'?esc((x.body||'').slice(0,30)||'Note'):fs(x.size)+' · '+S[x.sec][0]}</small></div>${sh?'<span class="chk">✓</span>':`<span class="dots" onclick="event.stopPropagation();rowMenu('${x.id}')">⋮</span>`}</div>`};
-const tile=R;
-const FR=(f,s)=>`<div class="r" onclick="open2('${s}','${f.id}')"><div class="fi">📁</div><div class="rt"><b>${esc(f.name)}</b><small>${items.filter(x=>x.fold==f.id).length} files${nav.s=='all'?' · '+S[f.sec][0]:''}</small></div><span class="dots" onclick="event.stopPropagation();delFolder('${f.id}')">🗑️</span></div>`;
+ return `<div class="r${sh&&sel.has(x.id)?' on':''}" onclick="${oc}"><div class="fi" style="${x.th?`background-image:url(${x.th});background-size:cover`:`background:${S[x.sec][3]}`}">${x.th?'':ico(x)}</div><div class="rt"><b>${esc(x.k=='note'?x.title:x.name)}</b><small>${x.k=='note'?esc((x.body||'').slice(0,30)||'Note'):fs(x.size)+' · '+S[x.sec][0]}</small></div>${sh?'<span class="chk">✓</span>':`<span class="dots" onclick="event.stopPropagation();rowMenu('${x.id}')">⋮</span>`}</div>`};
+const FR=(f)=>`<div class="fgc" onclick="open2('${f.sec}','${f.id}')"><span class="dots" onclick="event.stopPropagation();delFolder('${f.id}')">⋮</span><div class="ic2" style="background:${S[f.sec][4]}">${S[f.sec][1]}</div><b>${esc(f.name)}</b><small>${items.filter(x=>x.fold==f.id).length} Files, ${fs(items.filter(x=>x.fold==f.id).reduce((a,x)=>a+(x.size||0),0))}</small></div>`;
 function tab(t){tb=t;sel.clear();selMode=0;qs='';if(t=='v')nav={s:null,f:null};render()}
 const open2=(s,f)=>{nav={s,f:f||null,q:'all'};sel.clear();selMode=0;qs='';render()},up=()=>{nav.f?nav.f=null:nav.s=null;sel.clear();selMode=0;qs='';render()};
 const q=()=>qs.trim().toLowerCase();
 const mt=x=>!q()||(x.k=='note'?(x.title||'')+' '+(x.body||''):x.name||'').toLowerCase().includes(q());
-const srch=id=>`<div style="padding:0 22px"><input class="si" placeholder="🔍 Search files, folders, notes" value="${esc(qs)}" oninput="qs=this.value;$('#${id}').innerHTML=${id=='hm'?'homeBody()':'secBody()'}"></div>`;
+const srch=id=>`<input class="si" placeholder="🔍 Search" value="${esc(qs)}" oninput="qs=this.value;$('#${id}').innerHTML=${id=='hm'?'homeBody()':'secBody()'}">`;
 const homeBody=()=>{
- if(q()){const r=items.filter(x=>x.k=='folder'?x.name.toLowerCase().includes(q()):mt(x));return `<div class="sh"><span>RESULTS (${r.length})</span></div>`+(r.map(x=>x.k=='folder'?FR(x,x.sec):R(x)).join('')||'<p class="em">No matches found.</p>')}
+ if(q()){const r=items.filter(x=>x.k=='folder'?x.name.toLowerCase().includes(q()):mt(x));return `<div class="sh"><span>RESULTS (${r.length})</span></div>`+(r.map(x=>x.k=='folder'?R(x):R(x)).join('')||'<p class="em">No matches found.</p>')}
+ const used=usedBytes(),cats=Object.keys(S).filter(k=>k!='note').concat(['note']);
+ const grid=cats.map(k=>`<div class="gi" onclick="open2('${k}')"><div class="ic" style="background:${S[k][4]}">${S[k][1]}</div><div><b>${S[k][0]}</b><small>${Math.min(100,Math.round(items.filter(x=>x.sec==k&&x.k!='folder').reduce((a,x)=>a+(x.size||0),0)/MAX*100))}%</small></div></div>`).join('');
+ const segs=Object.keys(S).map(k=>({k,b:items.filter(x=>x.sec==k&&x.k!='folder').reduce((a,x)=>a+(x.size||0),0)}));
+ let acc=0,stops=segs.map(s=>{const p0=acc/MAX*100;acc+=s.b;return `${S[s.k][3]} ${p0}% ${acc/MAX*100}%`}).join(',');
+ const pct=Math.min(100,Math.round(acc/MAX*100));
+ const donut=`<div class="donut" style="background:conic-gradient(${stops},#e4e8ff ${pct}% 100%)"><b>${pct}%</b></div><p class="mu" style="margin:0">${fs(used)} of ${fs(MAX)} used</p>`;
  const rc=items.filter(x=>x.k!='folder').slice(0,6);
- return `<div class="sh"><span>ALL FOLDERS</span></div><div class="hs"><div class="t all" onclick="open2('all')"><span class="ic">🗂️</span><b>All</b><small>${items.filter(x=>x.k!='folder').length} items</small></div>${Object.keys(S).map(k=>`<div class="t ${k}" onclick="open2('${k}')"><span class="ic">${S[k][1]}</span><b>${S[k][0]}</b><small>${items.filter(x=>x.sec==k&&x.k!='folder').length} items</small></div>`).join('')}</div>
+ return `<div class="gc">${grid}</div><div class="mem"><div class="hd"><div class="ic">💽</div><b>Memory status</b><div class="arrow">↗</div></div>${donut}</div>
   <div class="sh"><span>RECENT FILES</span></div>${rc.map(x=>R(x)).join('')||'<p class="em">Nothing here yet. Tap + below to add files.</p>'}`};
 const fls=()=>nav.f?[]:items.filter(x=>x.k=='folder'&&(nav.s=='all'?(nav.q||'all')=='all':x.sec==nav.s)&&(!q()||x.name.toLowerCase().includes(q())));
-const secBody=()=>{const s=nav.s,fl=fls(),fi=vis();
- return fl.map(f=>FR(f,f.sec)).join('')+fi.map(x=>R(x,selMode)).join('')+(fl.length+fi.length?'':`<p class="em">${q()?'No matches found.':'Nothing here yet. Start from the buttons above.'}</p>`)};
+const secBody=()=>{const fl=fls(),fi=vis();
+ return (fl.length?`<div class="fg">${fl.map(f=>FR(f)).join('')}</div>`:'')+fi.map(x=>R(x,selMode)).join('')+(fl.length+fi.length?'':`<p class="em">${q()?'No matches found.':'Nothing here yet. Start from the buttons above.'}</p>`)};
 function render(){
  ['n1','n2','n3'].forEach((k,i)=>$('#'+k).classList.toggle('on',tb==['v','s','u'][i]));window.scrollTo(0,0);bar();
- if(tb=='u'){$('#v').innerHTML=`<div class="pd"><h1>Uploads</h1><p class="mu">Every file you pick is queued up here.</p></div><div class="row"><button onclick="pick()">⬆️ Add more files</button><button class="g" style="width:auto" onclick="clr()">Clear</button></div><div id="ql"></div>`;return paint()}
- if(tb=='s'){$('#v').innerHTML=`<div class="pd"><h1>Share</h1><p class="mu">Pick files or notes, get a code and give it to the other person. End-to-end encrypted, valid for 10 minutes, one-time use. Up to 25MB total.</p></div><div id="l"></div><div class="row"><button id="sb" onclick="send()">Send (0)</button></div><div class="pd" style="padding-top:0"><h3>📥 Receive</h3><input id="rc" inputmode="numeric" placeholder="8 digit code"><button class="g" onclick="recv()">Receive</button></div>`;return shareList()}
+ if(tb=='u'){$('#v').innerHTML=`<div class="pd"><h1>Uploads</h1><p class="mu">Every file you pick is queued up here, then encrypted and stored in your Firebase database.</p></div><div class="row" style="padding:0 22px"><button onclick="pick()">⬆️ Add more files</button><button class="g" style="width:auto" onclick="clr()">Clear</button></div><div id="ql" style="padding:0 22px"></div>`;return paint()}
+ if(tb=='s'){$('#v').innerHTML=`<div class="pd"><h1>Share</h1><p class="mu">Pick files or notes, get a code and give it to the other person. End-to-end encrypted, valid for 10 minutes, one-time use, up to ${fs(SHAREMAX)} total.</p></div><div id="l" style="padding:0 22px"></div><div class="row" style="padding:0 22px"><button id="sb" onclick="send()">Send (0)</button></div><div class="pd" style="padding-top:0"><h3>📥 Receive</h3><input id="rc" inputmode="numeric" placeholder="8 digit code"><button class="g" onclick="recv()">Receive</button></div>`;return shareList()}
  const s=nav.s,fo=nav.f&&items.find(x=>x.id==nav.f);
- if(!s){const used=items.reduce((a,x)=>a+(x.size||0),0),rc=items.filter(x=>x.k!='folder').slice(0,6);
-  return $('#v').innerHTML=`<div class="pd"><p class="mu" style="margin:0">Welcome</p><h1>Your storage</h1><div class="sc"><div class="ico">🗄️</div><div style="flex:1"><small>Total stored</small><b style="font-size:1.8rem;line-height:1.1;display:block;margin:2px 0">${fs(used)}</b><small>${items.filter(x=>x.k!='folder').length} files saved</small></div></div></div>
-  ${srch('hm')}<div id="hm">${homeBody()}</div>`}
+ if(!s){return $('#v').innerHTML=`<div class="pd"><p class="mu" style="margin:0">Welcome</p><h1>My storage</h1>${srch('hm')}<div id="hm" style="margin-top:16px">${homeBody()}</div></div>`}
  const fl=fls(),fi=vis();
- $('#v').innerHTML=`<div class="bn"><button class="bb" onclick="up()">←</button><h1>${fo?esc(fo.name):s=='all'?'All':S[s][0]}</h1><small>${fi.length} items${fl.length?' · '+fl.length+' folders':''}</small></div>
+ $('#v').innerHTML=`<div class="bn"><button class="bb" onclick="up()">←</button><h1>${fo?esc(fo.name):s=='all'?'All folders':S[s][0]}</h1><small>${fi.length} items${fl.length?' · '+fl.length+' folders':''}</small></div>
  <div class="sheet"><div class="row">${selMode?`<button onclick="selAll()">Select all</button><button class="g" style="width:auto" onclick="selTog()">Cancel</button>`:s=='note'?`<button onclick="noteForm()">✍️ New note</button>`:`${nav.f?`<button class="g d" onclick="delFolder('${nav.f}')">🗑️ Folder</button>`:`<button class="g" onclick="mkf()">📁 Folder</button>`}<button onclick="pick()">⬆️ Upload</button>`}${selMode||CB?'':'<button class="g" style="width:auto" onclick="selTog()">☑️</button>'}</div>
- ${srch('sl')}${s=='all'?`<div class="hs" style="padding:4px 22px 10px">${CHIPS.map(([k,l])=>`<button class="ch${(nav.q||'all')==k?' on':''}" onclick="setQ('${k}')">${l} ${items.filter(x=>x.k!='folder'&&cat(x,k)).length}</button>`).join('')}</div>`:''}<div id="sl">${secBody()}</div></div>`;
+ <div style="margin:10px 0">${srch('sl')}</div>${s=='all'?`<div class="hs">${CHIPS.map(([k,l])=>`<button class="ch${(nav.q||'all')==k?' on':''}" onclick="setQ('${k}')">${l} ${items.filter(x=>x.k!='folder'&&cat(x,k)).length}</button>`).join('')}</div>`:''}<div id="sl">${secBody()}</div></div>`;
 }
 function shareList(){
  $('#l').innerHTML=items.filter(x=>x.k!='folder').map(x=>R(x,1)).join('')||'<p class="em">Add something to the vault first.</p>';
@@ -226,7 +267,7 @@ const tg=id=>{sel.has(id)?sel.delete(id):sel.add(id);tb=='s'?shareList():keep()}
 const keep=()=>{const y=scrollY;render();scrollTo(0,y)};
 const isDoc=x=>x.k=='file'&&(/pdf|word|officedocument|msword|excel|powerpoint|opendocument|rtf|text\//.test(x.mime||'')||/\.(pdf|docx?|xlsx?|pptx?|txt|csv|rtf|odt|ods|odp)$/i.test(x.name||''));
 const cat=(x,q)=>q=='all'||(q=='img'?x.sec=='img':q=='vid'?x.sec=='vid':q=='note'?x.k=='note':q=='doc'?isDoc(x):x.k=='file'&&x.sec=='file'&&!isDoc(x));
-const CHIPS=[['all','All'],['img','🖼️ Images'],['vid','🎬 Videos'],['doc','📕 Documents'],['file','📄 Files'],['note','📝 Notes']];
+const CHIPS=[['all','All'],['img','🖼️ Photos'],['vid','🎬 Videos'],['doc','📕 Documents'],['file','📄 Files'],['note','📝 Notes']];
 const setQ=k=>{nav.q=k;sel.clear();render()};
 const vis=()=>(nav.s=='all'?items.filter(x=>x.k!='folder'&&cat(x,nav.q||'all')):items.filter(x=>x.sec==nav.s&&x.k!='folder'&&(x.fold||'')==(nav.f||''))).filter(mt);
 const selTog=()=>{selMode=!selMode;sel.clear();keep()};
@@ -246,7 +287,7 @@ async function paste(){
    const nx={...x,sec:s,fold:f};
    if(C.cut)await col('items').doc(id).update({c:await seal(KEY,nx)});
    else if(x.k=='note')await col('items').add({c:await seal(KEY,nx),ts:Date.now()});
-   else{const {bid,n,size,...meta}=nx;await putBytes(await getBytes(x),meta)}
+   else{const {bid,n,size,...meta}=nx;const bytes=await getBytes(x);await putBytes(new Blob([bytes]),meta)}
   }}catch(e){alert(e.message)}
  st('');if(skip)alert(skip+' item(s) skipped: notes and files cannot be mixed.');render();
 }
@@ -266,7 +307,7 @@ async function delSel(){
  try{for(let j=0;j<L.length;j++){st(`Deleting ${j+1}/${L.length}…`);if(items.find(a=>a.id==L[j]))await delItem(L[j])}}catch(e){alert(e.message)}
  st('');render();
 }
-async function delItem(id){const x=items.find(a=>a.id==id);if(x.k=='file')for(let i=0;i<x.n;i++)await col('blobs').doc(x.bid+'_'+i).delete();await col('items').doc(id).delete()}
+async function delItem(id){const x=items.find(a=>a.id==id);if(x.k=='file')await deleteBlob(x.bid,x.n);await col('items').doc(id).delete()}
 async function delFolder(id){if(!confirm('This folder and all its files will be deleted. Sure?'))return;for(const x of items.filter(a=>a.fold==id))await delItem(x.id);await delItem(id);nav.f=null;render()}
 async function del(id){if(confirm('Delete this permanently?')){await delItem(id);m.close()}}
 
@@ -290,16 +331,16 @@ async function saveNote(id){
   id?await col('items').doc(id).update({c}):await col('items').add({c,ts:Date.now()});m.close()}catch(e){alert(e.message)}
 }
 
-// ===== Code-based sharing, end-to-end encrypted =====
+// ===== Code-based sharing (small files), end-to-end encrypted, via Firebase RTDB =====
 function send(){
  const L=items.filter(i=>sel.has(i.id));if(!L.length)return alert('Select items first');
- if(L.reduce((a,x)=>a+(x.size||0),0)>MAX)return alert('You cannot send more than 25MB in total');pushShare(L);
+ if(L.reduce((a,x)=>a+(x.size||0),0)>SHAREMAX)return alert('You cannot send more than '+fs(SHAREMAX)+' in total');pushShare(L);
 }
 async function pushShare(L){
  try{
   const code=String(crypto.getRandomValues(new Uint32Array(1))[0]%1e8).padStart(8,'0'),id=await hid(code),k=await aes(code,'share'),metas=[];
   for(let j=0;j<L.length;j++){const {id:_,...x}=L[j];st(`Sending ${j+1}/${L.length}…`);
-   if(x.k=='file'){const u=await getBytes(x);for(let i=0;i<x.n;i++)await rtdb.ref('sb/'+id+'/'+x.bid+'_'+i).set(await sealB(k,u.subarray(i*CH,(i+1)*CH)));x.fold=''}
+   if(x.k=='file'){const u=await getBytes(x);const sch=600*1024,sn=Math.ceil(u.length/sch)||1;for(let i=0;i<sn;i++)await rtdb.ref('sb/'+id+'/'+(x.bid||'f')+'_'+i).set(await sealB(k,u.subarray(i*sch,(i+1)*sch)));x.sn=sn;x.fold=''}
    metas.push(x)}
   await rtdb.ref('s/'+id).set({c:await seal(k,metas),exp:Date.now()+6e5});st('');
   M(`<h3 style="margin-top:0">Share code</h3><div class="code">${code}</div><p class="mu">Give this code to the other person. It works for 10 minutes and expires as soon as it is received once.</p><button onclick="m.close()">OK</button>`);
@@ -314,8 +355,8 @@ async function recv(){
   for(let j=0;j<L.length;j++){const x=L[j];st(`Receive ${j+1}/${L.length}…`);
    if(x.k=='note'){await col('items').add({c:await seal(KEY,x),ts:Date.now()});continue}
    const u=new Uint8Array(x.size);let o=0;
-   for(let i=0;i<x.n;i++){const b=await unsealB(k,(await rtdb.ref('sb/'+id+'/'+x.bid+'_'+i).get()).val());u.set(b,o);o+=b.length}
-   await putBytes(u,{k:'file',sec:x.sec,fold:'',name:x.name,mime:x.mime,th:x.th})}
+   for(let i=0;i<x.sn;i++){const b=await unsealB(k,(await rtdb.ref('sb/'+id+'/'+(x.bid||'f')+'_'+i).get()).val());u.set(b,o);o+=b.length}
+   await putBytes(new Blob([u]),{k:'file',sec:x.sec,fold:'',name:x.name,mime:x.mime,th:x.th})}
   await r.remove();await rtdb.ref('sb/'+id).remove();st('');$('#rc').value='';alert('Received. Saved in your vault.');
  }catch(e){st('');alert(e.message)}
 }
